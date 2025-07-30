@@ -1,5 +1,5 @@
 # PHP / Nginx / MySQL 本地开发环境
-
+#请在php目录下编辑你的代码如想修改请修改yml文件的挂载目录
 > 使用 **Docker Compose** 一键启动的轻量级 LEMP 开发栈，内置：
 >
 > * **Nginx** (Alpine 最新版)
@@ -33,7 +33,7 @@
 1. **克隆仓库**
 
    ```bash
-   git clone YOUR_REPO_URL_HERE
+   git clone git@github.com:baimaosmo/php-docker.git
    ```
 
 2. **启动全部服务**
