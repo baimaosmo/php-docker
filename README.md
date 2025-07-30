@@ -34,7 +34,6 @@
 
    ```bash
    git clone YOUR_REPO_URL_HERE
-   cd YOUR_REPO_NAME
    ```
 
 2. **启动全部服务**
