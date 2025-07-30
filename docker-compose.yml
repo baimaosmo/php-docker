@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MySQL 服务 (使用最新的 8.0 版本)
+  mysql:
+    image: mysql:latest  # 最新版本
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: my_database
+    volumes:
+      - mysql_data:/Users/hr/php/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - php_network
+
+  # PHP 服务 (使用最新的 8.0-fpm 版本)
+  php:
+    image: php:8.0-fpm  # 最新版本
+    container_name: php
+    volumes:
+      - ./php:/var/www/html
+    networks:
+      - php_network
+
+  # Nginx 服务 (使用最新的 alpine 版本)
+  nginx:
+    image: nginx:latest  # 最新版本
+    container_name: nginx
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./php:/var/www/html
+    ports:
+      - "8081:80"
+    depends_on:
+      - php
+    networks:
+      - php_network
+
+volumes:
+  mysql_data:
+
+networks:
+  php_network:
+    driver: bridge
